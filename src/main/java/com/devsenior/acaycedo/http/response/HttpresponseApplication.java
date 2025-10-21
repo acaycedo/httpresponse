@@ -1,4 +1,4 @@
-package com.devsenior.acaycedo.httpresponse;
+package com.devsenior.acaycedo.http.response;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

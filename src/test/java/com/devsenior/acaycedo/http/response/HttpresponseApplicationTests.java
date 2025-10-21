@@ -1,4 +1,4 @@
-package com.devsenior.acaycedo.httpresponse;
+package com.devsenior.acaycedo.http.response;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
