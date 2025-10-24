@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.devsenior.acaycedo.http.response.dto.SumaResponse;
+import com.devsenior.acaycedo.http.response.dto.SumaResponse.SumaResponseBuilder;
+
 
 @RestController
 @RequestMapping("/api/response-entity")
@@ -25,17 +28,51 @@ public class ResponseEntityController {
     }
 
     @GetMapping("/suma/{num1}/{num2}")
-    public ResponseEntity<Integer> getSuma(@PathVariable String num1, @PathVariable String num2){
-        /*if (num1.isBlank()) {
-            return ResponseEntity.badRequest().body("Uno de los numeros esta en blanco");
+    //Es buena practica usar un objetc en estos casos cuando tenemos datos convinados
+    public ResponseEntity<SumaResponse> getSuma(@PathVariable String num1, @PathVariable String num2){
+        if (num1.isBlank()) {
+            return ResponseEntity.badRequest()
+            .body(SumaResponse.builder()
+                .isError(true)
+                .message("El Primer numero esta mal")
+                .build()
+            );
         
         }
         if (num2.isBlank()) {
-            return ResponseEntity.badRequest().body("Uno de los numeros esta en blanco");
+            return ResponseEntity.badRequest().
+            body(SumaResponse.builder()
+            .isError(true)
+            .message("El Segundo numero esta mal")
+            .build());
         }
-        */
+
+        for ( var l  : num1.toCharArray()){
+            if (Character.isDigit(l)){
+                return ResponseEntity.badRequest()
+                .body(SumaResponse.builder()
+                .isError(true)
+                .message("El numero 1 no es valido")
+                .build());
+            }
+        }
+        for ( var l  : num2.toCharArray()){
+            if (Character.isDigit(l)){
+                return ResponseEntity.badRequest()
+                .body(
+                    SumaResponse.builder()
+                    .isError(true)
+                    .message("El segundo numero no es valido")
+                    .build()
+                );
+            }
+        }
         
-        return ResponseEntity.ok().body(Integer.valueOf(num1) + Integer.valueOf(num2));
+        return ResponseEntity.ok()
+            .body(SumaResponse.builder()
+                .isError(null)
+                .value(Integer.valueOf(num1) + Integer.valueOf(num2))
+                .build());
     }   
     
 }
