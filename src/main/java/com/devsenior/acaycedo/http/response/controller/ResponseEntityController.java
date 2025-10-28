@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.devsenior.acaycedo.http.response.dto.SumaResponse;
-import com.devsenior.acaycedo.http.response.dto.SumaResponse.SumaResponseBuilder;
 
 
 @RestController
