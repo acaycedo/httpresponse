@@ -1,0 +1,5 @@
+###
+GET http://localhost:8080/api/response-entity/string-list
+
+###
+GET http://localhost:8080/api/exception/suma/10/asd

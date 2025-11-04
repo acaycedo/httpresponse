@@ -14,4 +14,7 @@ public class DefaultService {
         //devuelvo el resultado construido con la operacion
         return responseBuilder.build();
     }
+    public Integer sumaInteger(String num1, String num2) {
+        return Integer.valueOf(num1) + Integer.valueOf(num2);
+    }
 }
